@@ -1,8 +1,7 @@
-﻿Imports System.Data.OleDb
+Imports System.Data.OleDb
 
 Public Class frm_orders_purchase_a207421
 
-    ' Shopping cart structure
     Public Class CartItem
         Public ProductID As String
         Public ProductName As String
@@ -12,24 +11,19 @@ Public Class frm_orders_purchase_a207421
         Public Subtotal As Decimal
     End Class
 
-    ' Shopping cart list (stored in memory)
     Private shoppingCart As New List(Of CartItem)
 
     Private Sub frm_orders_purchase_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Apply theme to buttons
         ApplyButtonTheme(btnAddToCart)
         ApplyButtonTheme(btnViewCart)
         ApplyButtonTheme(btnPlaceOrder)
         ApplyButtonTheme(btnClearCart)
 
-        ' Apply DataGridView theme
         ApplyDataGridViewTheme(dgvProducts)
 
-        ' Load customers and staff
         LoadCustomers()
         LoadStaff()
 
-        ' Load products
         LoadProducts()
     End Sub
 
@@ -72,8 +66,44 @@ Public Class frm_orders_purchase_a207421
         End Try
     End Sub
 
+    Private Sub dgvProducts_SelectionChanged(sender As Object, e As EventArgs) Handles dgvProducts.SelectionChanged
+        If dgvProducts.SelectedRows.Count > 0 Then
+            Dim productId As String = dgvProducts.SelectedRows(0).Cells("Product ID").Value.ToString()
+            LoadProductImage(productId)
+        End If
+    End Sub
+
+    Private Sub LoadProductImage(productId As String)
+        Try
+            If picProduct.Image IsNot Nothing Then
+                picProduct.Image.Dispose()
+                picProduct.Image = Nothing
+            End If
+
+            Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+            Dim imagePath As String = System.IO.Path.Combine(picturesPath, productId & ".jpg")
+            Dim noImagePath As String = System.IO.Path.Combine(picturesPath, "no_img.jpg")
+
+            Dim pathToLoad As String = Nothing
+            If System.IO.File.Exists(imagePath) Then
+                pathToLoad = imagePath
+            ElseIf System.IO.File.Exists(noImagePath) Then
+                pathToLoad = noImagePath
+            End If
+
+            If pathToLoad IsNot Nothing Then
+                Using fs As New System.IO.FileStream(pathToLoad, System.IO.FileMode.Open, System.IO.FileAccess.Read)
+                    Using tempImage As Image = Image.FromStream(fs)
+                        picProduct.Image = New Bitmap(tempImage)
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            picProduct.Image = Nothing
+        End Try
+    End Sub
+
     Private Sub ApplyDataGridViewTheme(dgv As DataGridView)
-        ' Header style
         dgv.EnableHeadersVisualStyles = False
         dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(&H1, &H57, &H9B)
         dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
@@ -81,17 +111,14 @@ Public Class frm_orders_purchase_a207421
         dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         dgv.ColumnHeadersHeight = 35
 
-        ' Row style
         dgv.RowsDefaultCellStyle.Font = New Font("Segoe UI", 9)
         dgv.RowsDefaultCellStyle.BackColor = Color.White
         dgv.RowsDefaultCellStyle.ForeColor = Color.Black
         dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(&HE1, &HF5, &HFE)
 
-        ' Selection style
         dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(&H81, &HD4, &HFA)
         dgv.DefaultCellStyle.SelectionForeColor = Color.FromArgb(&H1, &H57, &H9B)
 
-        ' Grid lines
         dgv.GridColor = Color.FromArgb(&HB3, &HE5, &HFC)
         dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
 
@@ -104,36 +131,29 @@ Public Class frm_orders_purchase_a207421
             Return
         End If
 
-        ' Get quantity from numeric control
         Dim orderQuantity As Integer = CInt(numQuantity.Value)
 
-        ' Validate quantity
         If orderQuantity <= 0 Then
             MessageBox.Show("Quantity must be greater than 0!", "Invalid Quantity", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 
-        ' Get selected row
         Dim selectedRow As DataGridViewRow = dgvProducts.SelectedRows(0)
 
-        ' Get product information
         Dim productID As String = selectedRow.Cells("Product ID").Value.ToString()
         Dim productName As String = selectedRow.Cells("Product Name").Value.ToString()
         Dim price As Decimal = CDec(selectedRow.Cells("Price").Value)
         Dim stock As Integer = CInt(selectedRow.Cells("Stock").Value)
 
-        ' Check if quantity exceeds stock
         If orderQuantity > stock Then
             MessageBox.Show("Order quantity (" & orderQuantity & ") exceeds available stock (" & stock & ")!" & vbCrLf &
                           "Please reduce your order quantity.", "Insufficient Stock", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return
         End If
 
-        ' Check if product already exists in cart
         Dim existingItem As CartItem = shoppingCart.FirstOrDefault(Function(item) item.ProductID = productID)
 
         If existingItem IsNot Nothing Then
-            ' Check if new total quantity exceeds stock
             Dim newTotalQuantity As Integer = existingItem.Quantity + orderQuantity
             If newTotalQuantity > stock Then
                 MessageBox.Show("Adding this quantity would exceed available stock!" & vbCrLf &
@@ -143,7 +163,6 @@ Public Class frm_orders_purchase_a207421
                 Return
             End If
 
-            ' Update quantity
             existingItem.Quantity = newTotalQuantity
             existingItem.Subtotal = existingItem.Price * existingItem.Quantity
 
@@ -151,7 +170,6 @@ Public Class frm_orders_purchase_a207421
                           "Product: " & productName & vbCrLf &
                           "New Quantity: " & newTotalQuantity, "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Else
-            ' Add new item to cart
             Dim newItem As New CartItem With {
                 .ProductID = productID,
                 .ProductName = productName,
@@ -169,7 +187,6 @@ Public Class frm_orders_purchase_a207421
                           "Subtotal: RM " & newItem.Subtotal.ToString("N2"), "Cart Updated", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
-        ' Reset quantity to 1
         numQuantity.Value = 1
     End Sub
 
@@ -179,7 +196,6 @@ Public Class frm_orders_purchase_a207421
             Return
         End If
 
-        ' Open cart view form
         Dim cartForm As New frm_cart_view_a207421(shoppingCart)
         cartForm.ShowDialog()
     End Sub
@@ -200,7 +216,6 @@ Public Class frm_orders_purchase_a207421
             Return
         End If
 
-        ' Confirm order placement
         Dim totalAmount As Decimal = shoppingCart.Sum(Function(item) item.Subtotal)
         Dim confirmMsg As String = "Are you sure you want to place this order?" & vbCrLf & vbCrLf &
                                    "Customer: " & cmbCustomer.Text & vbCrLf &
@@ -214,19 +229,15 @@ Public Class frm_orders_purchase_a207421
             Return
         End If
 
-        ' Process order
         Try
             Dim conn As New OleDbConnection(dbConnectionString)
             conn.Open()
 
-            ' Start transaction
             Dim transaction As OleDbTransaction = conn.BeginTransaction()
 
             Try
-                ' Generate order ID
                 Dim orderID As String = GenerateOrderID(conn, transaction)
 
-                ' Insert order
                 Dim orderQuery As String = "INSERT INTO TBL_ORDERS_A207421 (FLD_ORDER_ID, FLD_CUSTOMER_ID, FLD_STAFF_ID, FLD_ORDER_DATE, FLD_TOTAL_AMOUNT) " &
                                           "VALUES (?, ?, ?, ?, ?)"
                 Dim cmdOrder As New OleDbCommand(orderQuery, conn, transaction)
@@ -237,9 +248,7 @@ Public Class frm_orders_purchase_a207421
                 cmdOrder.Parameters.Add("?", OleDbType.Currency).Value = totalAmount
                 cmdOrder.ExecuteNonQuery()
 
-                ' Insert order details and update stock
                 For Each item As CartItem In shoppingCart
-                    ' Insert order detail
                     Dim detailQuery As String = "INSERT INTO TBL_ORDERDETAILS_A207421 (FLD_ORDER_ID, FLD_PRODUCT_ID, FLD_QUANTITY, FLD_SUBTOTAL) " &
                                                "VALUES (?, ?, ?, ?)"
                     Dim cmdDetail As New OleDbCommand(detailQuery, conn, transaction)
@@ -249,7 +258,6 @@ Public Class frm_orders_purchase_a207421
                     cmdDetail.Parameters.Add("?", OleDbType.Currency).Value = item.Subtotal
                     cmdDetail.ExecuteNonQuery()
 
-                    ' Update product stock
                     Dim updateStockQuery As String = "UPDATE TBL_PRODUCTS_A207421 SET FLD_QUANTITY = FLD_QUANTITY - ? WHERE FLD_PRODUCT_ID = ?"
                     Dim cmdUpdateStock As New OleDbCommand(updateStockQuery, conn, transaction)
                     cmdUpdateStock.Parameters.Add("?", OleDbType.Integer).Value = item.Quantity
@@ -257,21 +265,17 @@ Public Class frm_orders_purchase_a207421
                     cmdUpdateStock.ExecuteNonQuery()
                 Next
 
-                ' Commit transaction
                 transaction.Commit()
 
                 MessageBox.Show("Order placed successfully!" & vbCrLf &
                               "Order ID: " & orderID & vbCrLf &
                               "Total Amount: RM " & totalAmount.ToString("N2"), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                ' Clear cart
                 shoppingCart.Clear()
 
-                ' Reload products
                 LoadProducts()
 
             Catch ex As Exception
-                ' Rollback on error
                 transaction.Rollback()
                 MessageBox.Show("Error placing order: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
@@ -284,7 +288,6 @@ Public Class frm_orders_purchase_a207421
     End Sub
 
     Private Function GenerateOrderID(conn As OleDbConnection, transaction As OleDbTransaction) As String
-        ' Get the latest order ID
         Dim query As String = "SELECT TOP 1 FLD_ORDER_ID FROM TBL_ORDERS_A207421 ORDER BY FLD_ORDER_ID DESC"
         Dim cmd As New OleDbCommand(query, conn, transaction)
         Dim result As Object = cmd.ExecuteScalar()
@@ -304,7 +307,6 @@ Public Class frm_orders_purchase_a207421
             Return
         End If
 
-        ' Confirm clear cart
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to clear your cart?" & vbCrLf &
                                                      "This will remove all items (" & shoppingCart.Count & " items).",
                                                      "Confirm Clear Cart", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)

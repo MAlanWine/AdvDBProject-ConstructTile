@@ -1,4 +1,4 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_orders_a207421
     Inherits System.Windows.Forms.Form
 
@@ -27,9 +27,6 @@ Partial Class frm_orders_a207421
         Me.panelHeader.SuspendLayout()
         Me.panelFooter.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
         Me.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold)
         Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -40,9 +37,6 @@ Partial Class frm_orders_a207421
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Orders Management"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'btnClose
-        '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
@@ -57,9 +51,6 @@ Partial Class frm_orders_a207421
         Me.btnClose.TabIndex = 5
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = False
-        '
-        'panelHeader
-        '
         Me.panelHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.panelHeader.Controls.Add(Me.lblTitle)
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
@@ -68,9 +59,6 @@ Partial Class frm_orders_a207421
         Me.panelHeader.Name = "panelHeader"
         Me.panelHeader.Size = New System.Drawing.Size(550, 70)
         Me.panelHeader.TabIndex = 1
-        '
-        'panelFooter
-        '
         Me.panelFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.panelFooter.Controls.Add(Me.btnClose)
         Me.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -79,9 +67,6 @@ Partial Class frm_orders_a207421
         Me.panelFooter.Name = "panelFooter"
         Me.panelFooter.Size = New System.Drawing.Size(550, 55)
         Me.panelFooter.TabIndex = 6
-        '
-        'btnPurchase
-        '
         Me.btnPurchase.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.btnPurchase.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnPurchase.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(2, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(209, Byte), Integer))
@@ -96,9 +81,6 @@ Partial Class frm_orders_a207421
         Me.btnPurchase.TabIndex = 7
         Me.btnPurchase.Text = "Purchase Products"
         Me.btnPurchase.UseVisualStyleBackColor = False
-        '
-        'btnQueryOrders
-        '
         Me.btnQueryOrders.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.btnQueryOrders.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnQueryOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(2, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(209, Byte), Integer))
@@ -113,9 +95,6 @@ Partial Class frm_orders_a207421
         Me.btnQueryOrders.TabIndex = 8
         Me.btnQueryOrders.Text = "Query Orders"
         Me.btnQueryOrders.UseVisualStyleBackColor = False
-        '
-        'lblSubtitle
-        '
         Me.lblSubtitle.Font = New System.Drawing.Font("Segoe UI", 11.0!)
         Me.lblSubtitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
         Me.lblSubtitle.Location = New System.Drawing.Point(100, 85)
@@ -125,9 +104,6 @@ Partial Class frm_orders_a207421
         Me.lblSubtitle.TabIndex = 9
         Me.lblSubtitle.Text = "Please select an option:"
         Me.lblSubtitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'frm_orders_a207421
-        '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White

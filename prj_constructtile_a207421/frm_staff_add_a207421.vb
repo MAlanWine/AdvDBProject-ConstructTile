@@ -1,8 +1,7 @@
-﻿Public Class frm_staff_add_a207421
+Public Class frm_staff_add_a207421
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
-            ' Validate inputs
             If String.IsNullOrWhiteSpace(txtStaffID.Text) Then
                 MessageBox.Show("Staff ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtStaffID.Focus()
@@ -21,7 +20,6 @@
                 Return
             End If
 
-            ' Email and Phone are optional but validate format if provided
             If Not String.IsNullOrWhiteSpace(txtEmail.Text) Then
                 If Not IsValidEmail(txtEmail.Text) Then
                     MessageBox.Show("Please enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -30,7 +28,6 @@
                 End If
             End If
 
-            ' Build INSERT query
             Dim query As String = "INSERT INTO TBL_STAFF_A207421 " &
                                   "(FLD_STAFF_ID, FLD_STAFF_NAME, FLD_POSITION, FLD_EMAIL, FLD_PHONE) " &
                                   "VALUES ('" & txtStaffID.Text.Trim().Replace("'", "''") & "', " &
@@ -39,7 +36,6 @@
                                   "'" & txtEmail.Text.Trim().Replace("'", "''") & "', " &
                                   "'" & txtPhone.Text.Trim().Replace("'", "''") & "')"
 
-            ' Execute query
             If ExecuteNonQuery(query) Then
                 MessageBox.Show("Staff member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ClearFields()

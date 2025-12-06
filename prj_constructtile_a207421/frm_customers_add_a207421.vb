@@ -1,8 +1,7 @@
-﻿Public Class frm_customers_add_a207421
+Public Class frm_customers_add_a207421
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
-            ' Validate inputs
             If String.IsNullOrWhiteSpace(txtCustomerID.Text) Then
                 MessageBox.Show("Customer ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtCustomerID.Focus()
@@ -15,15 +14,14 @@
                 Return
             End If
 
-            ' Build INSERT query
             Dim query As String = "INSERT INTO TBL_CUSTOMERS_A207421 " &
-                                  "(FLD_CUSTOMER_ID, FLD_CUSTOMER_NAME, FLD_ADDRESS, FLD_PHONE) " &
+                                  "(FLD_CUSTOMER_ID, FLD_CUSTOMER_NAME, FLD_EMAIL, FLD_PHONE, FLD_ADDRESS) " &
                                   "VALUES ('" & txtCustomerID.Text.Trim().Replace("'", "''") & "', " &
                                   "'" & txtCustomerName.Text.Trim().Replace("'", "''") & "', " &
-                                  "'" & txtAddress.Text.Trim().Replace("'", "''") & "', " &
-                                  "'" & txtPhone.Text.Trim().Replace("'", "''") & "')"
+                                  "'" & txtEmail.Text.Trim().Replace("'", "''") & "', " &
+                                  "'" & txtPhone.Text.Trim().Replace("'", "''") & "', " &
+                                  "'" & txtAddress.Text.Trim().Replace("'", "''") & "')"
 
-            ' Execute query
             If ExecuteNonQuery(query) Then
                 MessageBox.Show("Customer added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ClearFields()
@@ -48,8 +46,9 @@
     Private Sub ClearFields()
         txtCustomerID.Clear()
         txtCustomerName.Clear()
-        txtAddress.Clear()
+        txtEmail.Clear()
         txtPhone.Clear()
+        txtAddress.Clear()
     End Sub
 
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class frm_products_a207421
+Public Class frm_products_a207421
 
     Private Sub frm_products_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadProductsData()
@@ -8,7 +8,6 @@
         Try
             Dim dataTable As DataTable = ExecuteQuery("SELECT * FROM TBL_PRODUCTS_A207421")
 
-            ' Set friendly column names
             dataTable.Columns("FLD_PRODUCT_ID").ColumnName = "Product ID"
             dataTable.Columns("FLD_PRODUCT_NAME").ColumnName = "Product Name"
             dataTable.Columns("FLD_PRICE").ColumnName = "Price (RM)"
@@ -70,7 +69,6 @@
                     "FLD_MATERIAL LIKE '%" & searchText & "%'"
                 Dim dataTable As DataTable = ExecuteQuery(query)
 
-                ' Set friendly column names
                 dataTable.Columns("FLD_PRODUCT_ID").ColumnName = "Product ID"
                 dataTable.Columns("FLD_PRODUCT_NAME").ColumnName = "Product Name"
                 dataTable.Columns("FLD_PRICE").ColumnName = "Price (RM)"
@@ -86,6 +84,84 @@
         Catch ex As Exception
             MessageBox.Show("Error searching products: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Private Sub dgvProducts_SelectionChanged(sender As Object, e As EventArgs) Handles dgvProducts.SelectionChanged
+        If dgvProducts.SelectedRows.Count > 0 Then
+            Dim productId As String = dgvProducts.SelectedRows(0).Cells("Product ID").Value.ToString()
+            LoadProductImage(productId)
+        End If
+    End Sub
+
+    Private Sub LoadProductImage(productId As String)
+        Try
+            If picProduct.Image IsNot Nothing Then
+                picProduct.Image.Dispose()
+                picProduct.Image = Nothing
+            End If
+
+            Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+            Dim imagePath As String = System.IO.Path.Combine(picturesPath, productId & ".jpg")
+            Dim noImagePath As String = System.IO.Path.Combine(picturesPath, "no_img.jpg")
+
+            Dim pathToLoad As String = Nothing
+            If System.IO.File.Exists(imagePath) Then
+                pathToLoad = imagePath
+            ElseIf System.IO.File.Exists(noImagePath) Then
+                pathToLoad = noImagePath
+            End If
+
+            If pathToLoad IsNot Nothing Then
+                Using fs As New System.IO.FileStream(pathToLoad, System.IO.FileMode.Open, System.IO.FileAccess.Read)
+                    Using tempImage As Image = Image.FromStream(fs)
+                        picProduct.Image = New Bitmap(tempImage)
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            picProduct.Image = Nothing
+        End Try
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvProducts.SelectedRows.Count > 0 Then
+            Dim productId As String = dgvProducts.SelectedRows(0).Cells("Product ID").Value.ToString()
+            Dim productName As String = dgvProducts.SelectedRows(0).Cells("Product Name").Value.ToString()
+
+            Dim result As DialogResult = MessageBox.Show(
+                "Are you sure you want to delete the product '" & productName & "' (ID: " & productId & ")?" & vbCrLf & vbCrLf &
+                "This action cannot be undone and will also delete the associated image file.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                Try
+                    Dim query As String = "DELETE FROM TBL_PRODUCTS_A207421 WHERE FLD_PRODUCT_ID = '" & productId.Replace("'", "''") & "'"
+
+                    If ExecuteNonQuery(query) Then
+                        If picProduct.Image IsNot Nothing Then
+                            picProduct.Image.Dispose()
+                            picProduct.Image = Nothing
+                        End If
+
+                        Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+                        Dim imagePath As String = System.IO.Path.Combine(picturesPath, productId & ".jpg")
+
+                        If System.IO.File.Exists(imagePath) Then
+                            System.IO.File.Delete(imagePath)
+                        End If
+
+                        MessageBox.Show("Product deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        LoadProductsData()
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error deleting product: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        Else
+            MessageBox.Show("Please select a product to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
     End Sub
 
 End Class

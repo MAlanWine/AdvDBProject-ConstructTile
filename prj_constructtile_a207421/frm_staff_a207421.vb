@@ -1,4 +1,4 @@
-﻿Public Class frm_staff_a207421
+Public Class frm_staff_a207421
 
     Private Sub frm_staff_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadStaffData()
@@ -8,7 +8,6 @@
         Try
             Dim dataTable As DataTable = ExecuteQuery("SELECT * FROM TBL_STAFF_A207421")
 
-            ' Set friendly column names
             dataTable.Columns("FLD_STAFF_ID").ColumnName = "Staff ID"
             dataTable.Columns("FLD_STAFF_NAME").ColumnName = "Staff Name"
             dataTable.Columns("FLD_POSITION").ColumnName = "Position"
@@ -51,6 +50,28 @@
             LoadStaffData()
         Else
             MessageBox.Show("Please select a staff member to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvStaff.SelectedRows.Count > 0 Then
+            Dim staffId As String = dgvStaff.SelectedRows(0).Cells("Staff ID").Value.ToString()
+            Dim staffName As String = dgvStaff.SelectedRows(0).Cells("Staff Name").Value.ToString()
+
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete staff member '" & staffName & "'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                Try
+                    Dim sql As String = "DELETE FROM TBL_STAFF_A207421 WHERE FLD_STAFF_ID = '" & staffId & "'"
+                    ExecuteNonQuery(sql)
+                    MessageBox.Show("Staff member deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    LoadStaffData()
+                Catch ex As Exception
+                    MessageBox.Show("Error deleting staff member: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        Else
+            MessageBox.Show("Please select a staff member to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 

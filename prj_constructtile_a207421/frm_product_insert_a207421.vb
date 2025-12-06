@@ -1,14 +1,38 @@
-﻿Public Class frm_product_insert_a207421
+Public Class frm_product_insert_a207421
+
+    Private selectedImagePath As String = Nothing
 
     Private Sub frm_product_insert_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Populate Type ComboBox
         cmbType.Items.AddRange(New String() {"Floor", "Wall", "Roof"})
         cmbType.SelectedIndex = 0
     End Sub
 
+    Private Sub btnUploadImage_Click(sender As Object, e As EventArgs) Handles btnUploadImage.Click
+        Dim openFileDialog As New OpenFileDialog()
+        openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+        openFileDialog.Title = "Select Product Image"
+
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            Try
+                If picProduct.Image IsNot Nothing Then
+                    picProduct.Image.Dispose()
+                    picProduct.Image = Nothing
+                End If
+
+                selectedImagePath = openFileDialog.FileName
+                Using fs As New System.IO.FileStream(selectedImagePath, System.IO.FileMode.Open, System.IO.FileAccess.Read)
+                    Using tempImage As Image = Image.FromStream(fs)
+                        picProduct.Image = New Bitmap(tempImage)
+                    End Using
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error loading image: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
         Try
-            ' Validate inputs
             If String.IsNullOrWhiteSpace(txtProductID.Text) Then
                 MessageBox.Show("Product ID is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtProductID.Focus()
@@ -33,7 +57,6 @@
                 Return
             End If
 
-            ' Build INSERT query
             Dim query As String = "INSERT INTO TBL_PRODUCTS_A207421 " &
                                   "(FLD_PRODUCT_ID, FLD_PRODUCT_NAME, FLD_PRICE, FLD_BRAND, FLD_TYPE, FLD_MATERIAL, FLD_SIZE, FLD_QUANTITY) " &
                                   "VALUES ('" & txtProductID.Text.Trim() & "', " &
@@ -45,8 +68,22 @@
                                   "'" & txtSize.Text.Trim().Replace("'", "''") & "', " &
                                   txtQuantity.Text.Trim() & ")"
 
-            ' Execute query
             If ExecuteNonQuery(query) Then
+                If Not String.IsNullOrEmpty(selectedImagePath) AndAlso picProduct.Image IsNot Nothing Then
+                    Try
+                        Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+                        If Not System.IO.Directory.Exists(picturesPath) Then
+                            System.IO.Directory.CreateDirectory(picturesPath)
+                        End If
+
+                        Dim destinationPath As String = System.IO.Path.Combine(picturesPath, txtProductID.Text.Trim() & ".jpg")
+
+                        picProduct.Image.Save(destinationPath, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    Catch imgEx As Exception
+                        MessageBox.Show("Product inserted but image save failed: " & imgEx.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End Try
+                End If
+
                 MessageBox.Show("Product inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 ClearFields()
                 txtProductID.Focus()
@@ -76,6 +113,12 @@
         txtMaterial.Clear()
         txtSize.Clear()
         txtQuantity.Clear()
+
+        If picProduct.Image IsNot Nothing Then
+            picProduct.Image.Dispose()
+            picProduct.Image = Nothing
+        End If
+        selectedImagePath = Nothing
     End Sub
 
 End Class

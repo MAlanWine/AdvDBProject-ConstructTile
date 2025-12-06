@@ -1,8 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frm_staff_add_a207421
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class frm_staff_add_a207421
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
@@ -37,9 +32,6 @@ Partial Class frm_staff_add_a207421
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
         Me.lblTitle.AutoSize = False
         Me.lblTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitle.Location = New System.Drawing.Point(12, 9)
@@ -48,9 +40,6 @@ Partial Class frm_staff_add_a207421
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Add New Staff Member"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblStaffID
-        '
         Me.lblStaffID.AutoSize = True
         Me.lblStaffID.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStaffID.Location = New System.Drawing.Point(50, 70)
@@ -58,17 +47,11 @@ Partial Class frm_staff_add_a207421
         Me.lblStaffID.Size = New System.Drawing.Size(70, 17)
         Me.lblStaffID.TabIndex = 1
         Me.lblStaffID.Text = "Staff ID:"
-        '
-        'txtStaffID
-        '
         Me.txtStaffID.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStaffID.Location = New System.Drawing.Point(180, 67)
         Me.txtStaffID.Name = "txtStaffID"
         Me.txtStaffID.Size = New System.Drawing.Size(350, 23)
         Me.txtStaffID.TabIndex = 2
-        '
-        'lblStaffName
-        '
         Me.lblStaffName.AutoSize = True
         Me.lblStaffName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblStaffName.Location = New System.Drawing.Point(50, 110)
@@ -76,17 +59,11 @@ Partial Class frm_staff_add_a207421
         Me.lblStaffName.Size = New System.Drawing.Size(88, 17)
         Me.lblStaffName.TabIndex = 3
         Me.lblStaffName.Text = "Staff Name:"
-        '
-        'txtStaffName
-        '
         Me.txtStaffName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStaffName.Location = New System.Drawing.Point(180, 107)
         Me.txtStaffName.Name = "txtStaffName"
         Me.txtStaffName.Size = New System.Drawing.Size(350, 23)
         Me.txtStaffName.TabIndex = 4
-        '
-        'lblPosition
-        '
         Me.lblPosition.AutoSize = True
         Me.lblPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPosition.Location = New System.Drawing.Point(50, 150)
@@ -94,17 +71,11 @@ Partial Class frm_staff_add_a207421
         Me.lblPosition.Size = New System.Drawing.Size(63, 17)
         Me.lblPosition.TabIndex = 5
         Me.lblPosition.Text = "Position:"
-        '
-        'txtPosition
-        '
         Me.txtPosition.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPosition.Location = New System.Drawing.Point(180, 147)
         Me.txtPosition.Name = "txtPosition"
         Me.txtPosition.Size = New System.Drawing.Size(350, 23)
         Me.txtPosition.TabIndex = 6
-        '
-        'lblEmail
-        '
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEmail.Location = New System.Drawing.Point(50, 190)
@@ -112,17 +83,11 @@ Partial Class frm_staff_add_a207421
         Me.lblEmail.Size = New System.Drawing.Size(50, 17)
         Me.lblEmail.TabIndex = 7
         Me.lblEmail.Text = "Email:"
-        '
-        'txtEmail
-        '
         Me.txtEmail.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEmail.Location = New System.Drawing.Point(180, 187)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(350, 23)
         Me.txtEmail.TabIndex = 8
-        '
-        'lblPhone
-        '
         Me.lblPhone.AutoSize = True
         Me.lblPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPhone.Location = New System.Drawing.Point(50, 230)
@@ -130,17 +95,11 @@ Partial Class frm_staff_add_a207421
         Me.lblPhone.Size = New System.Drawing.Size(56, 17)
         Me.lblPhone.TabIndex = 9
         Me.lblPhone.Text = "Phone:"
-        '
-        'txtPhone
-        '
         Me.txtPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPhone.Location = New System.Drawing.Point(180, 227)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(350, 23)
         Me.txtPhone.TabIndex = 10
-        '
-        'btnAdd
-        '
         Me.btnAdd.BackColor = System.Drawing.Color.FromArgb(CType(100, Byte), CType(180, Byte), CType(230, Byte))
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAdd.ForeColor = System.Drawing.Color.White
@@ -150,9 +109,6 @@ Partial Class frm_staff_add_a207421
         Me.btnAdd.TabIndex = 11
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = False
-        '
-        'btnClear
-        '
         Me.btnClear.BackColor = System.Drawing.Color.FromArgb(CType(173, Byte), CType(216, Byte), CType(230, Byte))
         Me.btnClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnClear.ForeColor = System.Drawing.Color.FromArgb(CType(0, Byte), CType(0, Byte), CType(0, Byte))
@@ -162,9 +118,6 @@ Partial Class frm_staff_add_a207421
         Me.btnClear.TabIndex = 12
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = False
-        '
-        'btnCancel
-        '
         Me.btnCancel.BackColor = System.Drawing.Color.FromArgb(CType(173, Byte), CType(216, Byte), CType(230, Byte))
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.ForeColor = System.Drawing.Color.FromArgb(CType(0, Byte), CType(0, Byte), CType(0, Byte))
@@ -174,9 +127,6 @@ Partial Class frm_staff_add_a207421
         Me.btnCancel.TabIndex = 13
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = False
-        '
-        'frm_staff_add_a207421
-        '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(230, Byte), CType(242, Byte), CType(255, Byte))

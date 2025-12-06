@@ -1,4 +1,4 @@
-﻿Public Class frm_orders_query_a207421
+Public Class frm_orders_query_a207421
 
     Private Sub frm_orders_query_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadOrders()
@@ -76,7 +76,7 @@
 
             orderInfo &= "--- ORDER ITEMS ---" & vbCrLf
             For Each row As DataRow In detailsDt.Rows
-                orderInfo &= $"• {row("Product Name")}" & vbCrLf
+                orderInfo &= $"? {row("Product Name")}" & vbCrLf
                 orderInfo &= $"  Quantity: {row("Quantity")} | Price: RM {Convert.ToDecimal(row("Price (RM)")):N2} | Subtotal: RM {Convert.ToDecimal(row("Subtotal (RM)")):N2}" & vbCrLf
             Next
             orderInfo &= vbCrLf

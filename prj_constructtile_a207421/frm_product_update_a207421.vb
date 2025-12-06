@@ -1,19 +1,75 @@
-﻿Public Class frm_product_update_a207421
+Public Class frm_product_update_a207421
 
     Private currentProductID As String
+    Private selectedImagePath As String = Nothing
+    Private imageChanged As Boolean = False
 
-    ' Constructor to receive the Product ID to update
     Public Sub New(productID As String)
         InitializeComponent()
         currentProductID = productID
     End Sub
 
     Private Sub frm_product_update_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Populate Type ComboBox
         cmbType.Items.AddRange(New String() {"Floor", "Wall", "Roof"})
 
-        ' Load the product data for the given Product ID
         LoadProductData()
+
+        LoadProductImage()
+    End Sub
+
+    Private Sub LoadProductImage()
+        Try
+            If picProduct.Image IsNot Nothing Then
+                picProduct.Image.Dispose()
+                picProduct.Image = Nothing
+            End If
+
+            Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+            Dim imagePath As String = System.IO.Path.Combine(picturesPath, currentProductID & ".jpg")
+            Dim noImagePath As String = System.IO.Path.Combine(picturesPath, "no_img.jpg")
+
+            Dim pathToLoad As String = Nothing
+            If System.IO.File.Exists(imagePath) Then
+                pathToLoad = imagePath
+            ElseIf System.IO.File.Exists(noImagePath) Then
+                pathToLoad = noImagePath
+            End If
+
+            If pathToLoad IsNot Nothing Then
+                Using fs As New System.IO.FileStream(pathToLoad, System.IO.FileMode.Open, System.IO.FileAccess.Read)
+                    Using tempImage As Image = Image.FromStream(fs)
+                        picProduct.Image = New Bitmap(tempImage)
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            picProduct.Image = Nothing
+        End Try
+    End Sub
+
+    Private Sub btnUploadImage_Click(sender As Object, e As EventArgs) Handles btnUploadImage.Click
+        Dim openFileDialog As New OpenFileDialog()
+        openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
+        openFileDialog.Title = "Select Product Image"
+
+        If openFileDialog.ShowDialog() = DialogResult.OK Then
+            Try
+                If picProduct.Image IsNot Nothing Then
+                    picProduct.Image.Dispose()
+                    picProduct.Image = Nothing
+                End If
+
+                selectedImagePath = openFileDialog.FileName
+                Using fs As New System.IO.FileStream(selectedImagePath, System.IO.FileMode.Open, System.IO.FileAccess.Read)
+                    Using tempImage As Image = Image.FromStream(fs)
+                        picProduct.Image = New Bitmap(tempImage)
+                    End Using
+                End Using
+                imageChanged = True
+            Catch ex As Exception
+                MessageBox.Show("Error loading image: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
     End Sub
 
     Private Sub LoadProductData()
@@ -24,7 +80,6 @@
             If dataTable.Rows.Count > 0 Then
                 Dim row As DataRow = dataTable.Rows(0)
 
-                ' Populate the fields with existing data
                 txtProductID.Text = row("FLD_PRODUCT_ID").ToString()
                 txtProductName.Text = row("FLD_PRODUCT_NAME").ToString()
                 txtPrice.Text = row("FLD_PRICE").ToString()
@@ -34,7 +89,6 @@
                 txtSize.Text = row("FLD_SIZE").ToString()
                 txtQuantity.Text = row("FLD_QUANTITY").ToString()
 
-                ' Disable Product ID field (Primary Key should not be editable)
                 txtProductID.ReadOnly = True
                 txtProductID.BackColor = Color.LightGray
             Else
@@ -50,7 +104,6 @@
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Try
-            ' Validate inputs
             If String.IsNullOrWhiteSpace(txtProductName.Text) Then
                 MessageBox.Show("Product Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtProductName.Focus()
@@ -69,7 +122,6 @@
                 Return
             End If
 
-            ' Build UPDATE query
             Dim query As String = "UPDATE TBL_PRODUCTS_A207421 SET " &
                                   "FLD_PRODUCT_NAME = '" & txtProductName.Text.Trim().Replace("'", "''") & "', " &
                                   "FLD_PRICE = " & txtPrice.Text.Trim() & ", " &
@@ -80,8 +132,26 @@
                                   "FLD_QUANTITY = " & txtQuantity.Text.Trim() & " " &
                                   "WHERE FLD_PRODUCT_ID = '" & currentProductID.Replace("'", "''") & "'"
 
-            ' Execute query
             If ExecuteNonQuery(query) Then
+                If imageChanged AndAlso Not String.IsNullOrEmpty(selectedImagePath) AndAlso picProduct.Image IsNot Nothing Then
+                    Try
+                        Dim picturesPath As String = System.IO.Path.Combine(Application.StartupPath, "pictures")
+                        If Not System.IO.Directory.Exists(picturesPath) Then
+                            System.IO.Directory.CreateDirectory(picturesPath)
+                        End If
+
+                        Dim destinationPath As String = System.IO.Path.Combine(picturesPath, currentProductID & ".jpg")
+
+                        If System.IO.File.Exists(destinationPath) Then
+                            System.IO.File.Delete(destinationPath)
+                        End If
+
+                        picProduct.Image.Save(destinationPath, System.Drawing.Imaging.ImageFormat.Jpeg)
+                    Catch imgEx As Exception
+                        MessageBox.Show("Product updated but image save failed: " & imgEx.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    End Try
+                End If
+
                 MessageBox.Show("Product updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
             End If
@@ -94,7 +164,6 @@
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        ' For update form, clear all editable fields (not Product ID)
         txtProductName.Clear()
         txtPrice.Clear()
         txtBrand.Clear()

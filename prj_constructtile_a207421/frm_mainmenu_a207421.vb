@@ -1,7 +1,6 @@
-﻿Public Class frm_mainmenu_a207421
+Public Class frm_mainmenu_a207421
 
     Private Sub frm_mainmenu_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Initialize database connection test
         If Not InitializeDatabase() Then
             MessageBox.Show("Warning: Database connection could not be established. Please ensure DB_CONSTRUCTTILE_A207421.accdb exists in the bin\Debug folder.", "Database Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If

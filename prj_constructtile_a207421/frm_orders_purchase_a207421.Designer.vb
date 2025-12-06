@@ -1,8 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frm_orders_purchase_a207421
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class frm_orders_purchase_a207421
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.lblTitle = New System.Windows.Forms.Label()
@@ -36,14 +31,15 @@ Partial Class frm_orders_purchase_a207421
         Me.btnClearCart = New System.Windows.Forms.Button()
         Me.pnlTop = New System.Windows.Forms.Panel()
         Me.pnlBottom = New System.Windows.Forms.Panel()
+        Me.picProduct = New System.Windows.Forms.PictureBox()
+        Me.panelImage = New System.Windows.Forms.Panel()
         CType(Me.dgvProducts, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.numQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picProduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTop.SuspendLayout()
         Me.pnlBottom.SuspendLayout()
+        Me.panelImage.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'lblTitle
-        '
         Me.lblTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
         Me.lblTitle.Dock = System.Windows.Forms.DockStyle.Top
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold)
@@ -54,9 +50,6 @@ Partial Class frm_orders_purchase_a207421
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Purchase Orders - ConstructTile"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblCustomer
-        '
         Me.lblCustomer.AutoSize = True
         Me.lblCustomer.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.lblCustomer.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -65,9 +58,6 @@ Partial Class frm_orders_purchase_a207421
         Me.lblCustomer.Size = New System.Drawing.Size(76, 19)
         Me.lblCustomer.TabIndex = 1
         Me.lblCustomer.Text = "Customer:"
-        '
-        'cmbCustomer
-        '
         Me.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbCustomer.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.cmbCustomer.FormattingEnabled = True
@@ -75,9 +65,6 @@ Partial Class frm_orders_purchase_a207421
         Me.cmbCustomer.Name = "cmbCustomer"
         Me.cmbCustomer.Size = New System.Drawing.Size(300, 25)
         Me.cmbCustomer.TabIndex = 2
-        '
-        'lblStaff
-        '
         Me.lblStaff.AutoSize = True
         Me.lblStaff.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.lblStaff.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -86,9 +73,6 @@ Partial Class frm_orders_purchase_a207421
         Me.lblStaff.Size = New System.Drawing.Size(44, 19)
         Me.lblStaff.TabIndex = 3
         Me.lblStaff.Text = "Staff:"
-        '
-        'cmbStaff
-        '
         Me.cmbStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbStaff.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.cmbStaff.FormattingEnabled = True
@@ -96,9 +80,6 @@ Partial Class frm_orders_purchase_a207421
         Me.cmbStaff.Name = "cmbStaff"
         Me.cmbStaff.Size = New System.Drawing.Size(300, 25)
         Me.cmbStaff.TabIndex = 4
-        '
-        'dgvProducts
-        '
         Me.dgvProducts.AllowUserToAddRows = False
         Me.dgvProducts.AllowUserToDeleteRows = False
         Me.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
@@ -110,11 +91,8 @@ Partial Class frm_orders_purchase_a207421
         Me.dgvProducts.Name = "dgvProducts"
         Me.dgvProducts.ReadOnly = True
         Me.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvProducts.Size = New System.Drawing.Size(960, 380)
+        Me.dgvProducts.Size = New System.Drawing.Size(700, 380)
         Me.dgvProducts.TabIndex = 5
-        '
-        'lblQuantity
-        '
         Me.lblQuantity.AutoSize = True
         Me.lblQuantity.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.lblQuantity.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -123,9 +101,6 @@ Partial Class frm_orders_purchase_a207421
         Me.lblQuantity.Size = New System.Drawing.Size(70, 19)
         Me.lblQuantity.TabIndex = 6
         Me.lblQuantity.Text = "Quantity:"
-        '
-        'numQuantity
-        '
         Me.numQuantity.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.numQuantity.Location = New System.Drawing.Point(100, 15)
         Me.numQuantity.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
@@ -134,9 +109,6 @@ Partial Class frm_orders_purchase_a207421
         Me.numQuantity.Size = New System.Drawing.Size(120, 29)
         Me.numQuantity.TabIndex = 7
         Me.numQuantity.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'btnAddToCart
-        '
         Me.btnAddToCart.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnAddToCart.Location = New System.Drawing.Point(250, 10)
         Me.btnAddToCart.Name = "btnAddToCart"
@@ -144,9 +116,6 @@ Partial Class frm_orders_purchase_a207421
         Me.btnAddToCart.TabIndex = 8
         Me.btnAddToCart.Text = "Add To Cart"
         Me.btnAddToCart.UseVisualStyleBackColor = True
-        '
-        'btnViewCart
-        '
         Me.btnViewCart.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnViewCart.Location = New System.Drawing.Point(420, 10)
         Me.btnViewCart.Name = "btnViewCart"
@@ -154,9 +123,6 @@ Partial Class frm_orders_purchase_a207421
         Me.btnViewCart.TabIndex = 9
         Me.btnViewCart.Text = "View My Order"
         Me.btnViewCart.UseVisualStyleBackColor = True
-        '
-        'btnPlaceOrder
-        '
         Me.btnPlaceOrder.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnPlaceOrder.Location = New System.Drawing.Point(590, 10)
         Me.btnPlaceOrder.Name = "btnPlaceOrder"
@@ -164,9 +130,6 @@ Partial Class frm_orders_purchase_a207421
         Me.btnPlaceOrder.TabIndex = 10
         Me.btnPlaceOrder.Text = "Place Order"
         Me.btnPlaceOrder.UseVisualStyleBackColor = True
-        '
-        'btnClearCart
-        '
         Me.btnClearCart.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.btnClearCart.Location = New System.Drawing.Point(760, 10)
         Me.btnClearCart.Name = "btnClearCart"
@@ -174,9 +137,6 @@ Partial Class frm_orders_purchase_a207421
         Me.btnClearCart.TabIndex = 11
         Me.btnClearCart.Text = "Clear Cart"
         Me.btnClearCart.UseVisualStyleBackColor = True
-        '
-        'pnlTop
-        '
         Me.pnlTop.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.pnlTop.Controls.Add(Me.lblCustomer)
         Me.pnlTop.Controls.Add(Me.cmbCustomer)
@@ -186,9 +146,6 @@ Partial Class frm_orders_purchase_a207421
         Me.pnlTop.Name = "pnlTop"
         Me.pnlTop.Size = New System.Drawing.Size(960, 50)
         Me.pnlTop.TabIndex = 12
-        '
-        'pnlBottom
-        '
         Me.pnlBottom.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.pnlBottom.Controls.Add(Me.lblQuantity)
         Me.pnlBottom.Controls.Add(Me.numQuantity)
@@ -200,13 +157,27 @@ Partial Class frm_orders_purchase_a207421
         Me.pnlBottom.Name = "pnlBottom"
         Me.pnlBottom.Size = New System.Drawing.Size(960, 60)
         Me.pnlBottom.TabIndex = 13
-        '
-        'frm_orders_purchase_a207421
-        '
+        Me.picProduct.BackColor = System.Drawing.Color.White
+        Me.picProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picProduct.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.picProduct.Location = New System.Drawing.Point(5, 5)
+        Me.picProduct.Name = "picProduct"
+        Me.picProduct.Size = New System.Drawing.Size(230, 370)
+        Me.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picProduct.TabIndex = 0
+        Me.picProduct.TabStop = False
+        Me.panelImage.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.panelImage.Controls.Add(Me.picProduct)
+        Me.panelImage.Location = New System.Drawing.Point(730, 130)
+        Me.panelImage.Name = "panelImage"
+        Me.panelImage.Padding = New System.Windows.Forms.Padding(5)
+        Me.panelImage.Size = New System.Drawing.Size(240, 380)
+        Me.panelImage.TabIndex = 14
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(225, Byte), Integer), CType(CType(245, Byte), Integer), CType(CType(254, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1000, 600)
+        Me.Controls.Add(Me.panelImage)
         Me.Controls.Add(Me.pnlBottom)
         Me.Controls.Add(Me.pnlTop)
         Me.Controls.Add(Me.dgvProducts)
@@ -218,10 +189,12 @@ Partial Class frm_orders_purchase_a207421
         Me.Text = "Purchase Orders - ConstructTile A207421"
         CType(Me.dgvProducts, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.numQuantity, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picProduct, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTop.ResumeLayout(False)
         Me.pnlTop.PerformLayout()
         Me.pnlBottom.ResumeLayout(False)
         Me.pnlBottom.PerformLayout()
+        Me.panelImage.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -240,4 +213,6 @@ Partial Class frm_orders_purchase_a207421
     Friend WithEvents btnClearCart As Button
     Friend WithEvents pnlTop As Panel
     Friend WithEvents pnlBottom As Panel
+    Friend WithEvents picProduct As PictureBox
+    Friend WithEvents panelImage As Panel
 End Class

@@ -1,4 +1,4 @@
-﻿Public Class frm_customers_a207421
+Public Class frm_customers_a207421
 
     Private Sub frm_customers_a207421_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadCustomersData()
@@ -8,7 +8,6 @@
         Try
             Dim dataTable As DataTable = ExecuteQuery("SELECT * FROM TBL_CUSTOMERS_A207421")
 
-            ' Set friendly column names
             dataTable.Columns("FLD_CUSTOMER_ID").ColumnName = "Customer ID"
             dataTable.Columns("FLD_CUSTOMER_NAME").ColumnName = "Customer Name"
             dataTable.Columns("FLD_EMAIL").ColumnName = "Email"
@@ -51,6 +50,28 @@
             LoadCustomersData()
         Else
             MessageBox.Show("Please select a customer to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvCustomers.SelectedRows.Count > 0 Then
+            Dim customerId As String = dgvCustomers.SelectedRows(0).Cells("Customer ID").Value.ToString()
+            Dim customerName As String = dgvCustomers.SelectedRows(0).Cells("Customer Name").Value.ToString()
+
+            Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete customer '" & customerName & "'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                Try
+                    Dim sql As String = "DELETE FROM TBL_CUSTOMERS_A207421 WHERE FLD_CUSTOMER_ID = '" & customerId & "'"
+                    ExecuteNonQuery(sql)
+                    MessageBox.Show("Customer deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    LoadCustomersData()
+                Catch ex As Exception
+                    MessageBox.Show("Error deleting customer: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        Else
+            MessageBox.Show("Please select a customer to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
     End Sub
 

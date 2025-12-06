@@ -1,8 +1,7 @@
-﻿Public Class frm_staff_modify_a207421
+Public Class frm_staff_modify_a207421
 
     Private currentStaffID As String
 
-    ' Constructor to receive the Staff ID to update
     Public Sub New(staffID As String)
         InitializeComponent()
         currentStaffID = staffID
@@ -20,14 +19,12 @@
             If dataTable.Rows.Count > 0 Then
                 Dim row As DataRow = dataTable.Rows(0)
 
-                ' Populate the fields with existing data
                 txtStaffID.Text = row("FLD_STAFF_ID").ToString()
                 txtStaffName.Text = row("FLD_STAFF_NAME").ToString()
                 txtPosition.Text = row("FLD_POSITION").ToString()
                 txtEmail.Text = row("FLD_EMAIL").ToString()
                 txtPhone.Text = row("FLD_PHONE").ToString()
 
-                ' Disable Staff ID field (Primary Key should not be editable)
                 txtStaffID.ReadOnly = True
                 txtStaffID.BackColor = Color.LightGray
             Else
@@ -43,7 +40,6 @@
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Try
-            ' Validate inputs
             If String.IsNullOrWhiteSpace(txtStaffName.Text) Then
                 MessageBox.Show("Staff Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 txtStaffName.Focus()
@@ -56,7 +52,6 @@
                 Return
             End If
 
-            ' Email validation if provided
             If Not String.IsNullOrWhiteSpace(txtEmail.Text) Then
                 If Not IsValidEmail(txtEmail.Text) Then
                     MessageBox.Show("Please enter a valid email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -65,7 +60,6 @@
                 End If
             End If
 
-            ' Build UPDATE query
             Dim query As String = "UPDATE TBL_STAFF_A207421 SET " &
                                   "FLD_STAFF_NAME = '" & txtStaffName.Text.Trim().Replace("'", "''") & "', " &
                                   "FLD_POSITION = '" & txtPosition.Text.Trim().Replace("'", "''") & "', " &
@@ -73,7 +67,6 @@
                                   "FLD_PHONE = '" & txtPhone.Text.Trim().Replace("'", "''") & "' " &
                                   "WHERE FLD_STAFF_ID = '" & currentStaffID.Replace("'", "''") & "'"
 
-            ' Execute query
             If ExecuteNonQuery(query) Then
                 MessageBox.Show("Staff member updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()

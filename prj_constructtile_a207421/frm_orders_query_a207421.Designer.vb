@@ -1,8 +1,7 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frm_orders_query_a207421
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class frm_orders_query_a207421
         End Try
     End Sub
 
-    'Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panelHeader = New System.Windows.Forms.Panel()
@@ -35,9 +30,6 @@ Partial Class frm_orders_query_a207421
         Me.panelFooter.SuspendLayout()
         CType(Me.dgvOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'panelHeader
-        '
         Me.panelHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.panelHeader.Controls.Add(Me.lblTitle)
         Me.panelHeader.Dock = System.Windows.Forms.DockStyle.Top
@@ -45,9 +37,6 @@ Partial Class frm_orders_query_a207421
         Me.panelHeader.Name = "panelHeader"
         Me.panelHeader.Size = New System.Drawing.Size(1000, 70)
         Me.panelHeader.TabIndex = 0
-        '
-        'lblTitle
-        '
         Me.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 22.0!, System.Drawing.FontStyle.Bold)
         Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -57,9 +46,6 @@ Partial Class frm_orders_query_a207421
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Query Orders"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'panelFooter
-        '
         Me.panelFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(179, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(252, Byte), Integer))
         Me.panelFooter.Controls.Add(Me.btnClose)
         Me.panelFooter.Controls.Add(Me.btnRefresh)
@@ -71,9 +57,6 @@ Partial Class frm_orders_query_a207421
         Me.panelFooter.Name = "panelFooter"
         Me.panelFooter.Size = New System.Drawing.Size(1000, 60)
         Me.panelFooter.TabIndex = 1
-        '
-        'btnClose
-        '
         Me.btnClose.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(198, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
@@ -86,9 +69,6 @@ Partial Class frm_orders_query_a207421
         Me.btnClose.TabIndex = 4
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = False
-        '
-        'btnRefresh
-        '
         Me.btnRefresh.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnRefresh.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(2, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(209, Byte), Integer))
@@ -101,9 +81,6 @@ Partial Class frm_orders_query_a207421
         Me.btnRefresh.TabIndex = 3
         Me.btnRefresh.Text = "Refresh"
         Me.btnRefresh.UseVisualStyleBackColor = False
-        '
-        'btnDeleteOrder
-        '
         Me.btnDeleteOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(239, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(80, Byte), Integer))
         Me.btnDeleteOrder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnDeleteOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(198, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
@@ -116,9 +93,6 @@ Partial Class frm_orders_query_a207421
         Me.btnDeleteOrder.TabIndex = 2
         Me.btnDeleteOrder.Text = "Delete Order"
         Me.btnDeleteOrder.UseVisualStyleBackColor = False
-        '
-        'btnViewOrder
-        '
         Me.btnViewOrder.BackColor = System.Drawing.Color.FromArgb(CType(CType(129, Byte), Integer), CType(CType(212, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.btnViewOrder.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnViewOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(2, Byte), Integer), CType(CType(136, Byte), Integer), CType(CType(209, Byte), Integer))
@@ -131,9 +105,6 @@ Partial Class frm_orders_query_a207421
         Me.btnViewOrder.TabIndex = 1
         Me.btnViewOrder.Text = "View Order"
         Me.btnViewOrder.UseVisualStyleBackColor = False
-        '
-        'lblRecordCount
-        '
         Me.lblRecordCount.AutoSize = True
         Me.lblRecordCount.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.lblRecordCount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(1, Byte), Integer), CType(CType(87, Byte), Integer), CType(CType(155, Byte), Integer))
@@ -142,9 +113,6 @@ Partial Class frm_orders_query_a207421
         Me.lblRecordCount.Size = New System.Drawing.Size(114, 20)
         Me.lblRecordCount.TabIndex = 0
         Me.lblRecordCount.Text = "Total Orders: 0"
-        '
-        'dgvOrders
-        '
         Me.dgvOrders.AllowUserToAddRows = False
         Me.dgvOrders.AllowUserToDeleteRows = False
         Me.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -156,9 +124,6 @@ Partial Class frm_orders_query_a207421
         Me.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvOrders.Size = New System.Drawing.Size(1000, 470)
         Me.dgvOrders.TabIndex = 2
-        '
-        'frm_orders_query_a207421
-        '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
