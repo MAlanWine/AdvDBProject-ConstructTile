@@ -2,7 +2,6 @@ C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructti
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\bin\Debug\prj_constructtile_a207421.exe
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\bin\Debug\prj_constructtile_a207421.pdb
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\bin\Debug\prj_constructtile_a207421.xml
-C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.vbproj.AssemblyReference.cache
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.Resources.resources
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.vbproj.GenerateResource.cache
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.vbproj.CoreCompileInputs.cache
@@ -14,3 +13,4 @@ C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructti
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.frm_products_a207421.resources
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.frm_customers_a207421.resources
 C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.frm_orders_a207421.resources
+C:\Users\AlanWine\Documents\VSProjects\prj_constructtile_a207421\prj_constructtile_a207421\obj\Debug\prj_constructtile_a207421.vbproj.AssemblyReference.cache

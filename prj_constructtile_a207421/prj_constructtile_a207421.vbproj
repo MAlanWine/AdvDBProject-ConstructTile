@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_cart_view_a207421.Designer.vb">
+      <DependentUpon>frm_cart_view_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_cart_view_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frm_customers_add_a207421.Designer.vb">
       <DependentUpon>frm_customers_add_a207421.vb</DependentUpon>
     </Compile>
@@ -84,6 +90,18 @@
       <DependentUpon>frm_customers_modify_a207421.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_customers_modify_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_orders_purchase_a207421.Designer.vb">
+      <DependentUpon>frm_orders_purchase_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_orders_purchase_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_orders_query_a207421.Designer.vb">
+      <DependentUpon>frm_orders_query_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_orders_query_a207421.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_staff_add_a207421.Designer.vb">
