@@ -24,6 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>prj_constructtile_a207421.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -73,13 +74,74 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="frm_customers_add_a207421.Designer.vb">
+      <DependentUpon>frm_customers_add_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_customers_add_a207421.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="frm_customers_modify_a207421.Designer.vb">
+      <DependentUpon>frm_customers_modify_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_customers_modify_a207421.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_staff_add_a207421.Designer.vb">
+      <DependentUpon>frm_staff_add_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff_add_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_customers_a207421.Designer.vb">
+      <DependentUpon>frm_customers_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_customers_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_mainmenu_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_mainmenu_a207421.Designer.vb">
+      <DependentUpon>frm_mainmenu_a207421.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_orders_a207421.Designer.vb">
+      <DependentUpon>frm_orders_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_orders_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_products_a207421.Designer.vb">
+      <DependentUpon>frm_products_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_products_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_product_insert_a207421.Designer.vb">
+      <DependentUpon>frm_product_insert_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_product_insert_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_product_update_a207421.Designer.vb">
+      <DependentUpon>frm_product_update_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_product_update_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff_a207421.Designer.vb">
+      <DependentUpon>frm_staff_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_staff_modify_a207421.Designer.vb">
+      <DependentUpon>frm_staff_modify_a207421.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_staff_modify_a207421.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mod_globals_a207421.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -97,6 +159,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frm_customers_a207421.resx">
+      <DependentUpon>frm_customers_a207421.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_mainmenu_a207421.resx">
+      <DependentUpon>frm_mainmenu_a207421.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_orders_a207421.resx">
+      <DependentUpon>frm_orders_a207421.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_products_a207421.resx">
+      <DependentUpon>frm_products_a207421.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_staff_a207421.resx">
+      <DependentUpon>frm_staff_a207421.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
