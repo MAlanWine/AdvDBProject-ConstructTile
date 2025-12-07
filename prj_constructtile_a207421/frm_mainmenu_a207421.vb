@@ -4,6 +4,21 @@ Public Class frm_mainmenu_a207421
         If Not InitializeDatabase() Then
             MessageBox.Show("Warning: Database connection could not be established. Please ensure DB_CONSTRUCTTILE_A207421.accdb exists in the bin\Debug folder.", "Database Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
+
+        ' Set background image for the entire form
+        Try
+            Dim backgroundPath As String = System.IO.Path.Combine(Application.StartupPath, "background.png")
+            If System.IO.File.Exists(backgroundPath) Then
+                Me.BackgroundImage = Image.FromFile(backgroundPath)
+                Me.BackgroundImageLayout = ImageLayout.Stretch
+            End If
+        Catch ex As Exception
+            ' If background image fails to load, just continue with the default background color
+        End Try
+
+        ' Make panels transparent to show the background
+        panelButtons.BackColor = Color.Transparent
+        panelHeader.BackColor = Color.FromArgb(128, 179, 229, 252) ' 50% opacity light blue
     End Sub
 
     Private Sub btnProducts_Click(sender As Object, e As EventArgs) Handles btnProducts.Click
